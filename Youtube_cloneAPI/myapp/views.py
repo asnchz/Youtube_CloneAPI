@@ -52,9 +52,9 @@ class CommentDetail(APIView):
 
     def patch(self, user_input, request, pk):
         comment = self.get_object(pk)
-        if user_input == comment.likes:
+        if user_input == "like":
             comment.likes += 1
-        elif user_input == comment.dislike:
+        elif user_input == "dislike":
             comment.dislike += 1
         serializer = CommentSerializer(comment,data=request.data, partial=True)
         if serializer.is_valid():
